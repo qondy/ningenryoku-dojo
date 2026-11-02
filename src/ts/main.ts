@@ -14,6 +14,9 @@ import {
   totalXp, titleOf, skillStats, streak, countByDate, latestAssessment, todaySkill, drillIndex,
 } from './stats';
 import { Assessment, Feel, Practice, SkillKey } from './types';
+import { initClickTracking } from './analytics';
+
+initClickTracking();
 
 // ============================================================
 // DOM refs
