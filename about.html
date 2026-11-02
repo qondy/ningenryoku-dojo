@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人間力道場 — 機能紹介</title>
+<meta name="description" content="AIが広がるなかで、人間にしかできないポータブルスキル（問いを立てる・共感して聴く・決めて責任を持つ・人を巻き込むなど8つ）を、1日5分のお題で稽古して鍛えるアプリ。">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#27ae60">
+<meta property="og:title" content="人間力道場 — 機能紹介">
+<meta property="og:image" content="https://ningenryoku-dojo.vercel.app/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --c1: #27ae60;
+    --c2: #229954;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: #1a1a1a;
+    color: #ececec;
+    line-height: 1.7;
+  }
+  a { color: inherit; text-decoration: none; }
+  .topbar {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 24px 20px 0;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #9a9a9a;
+    transition: color .15s ease;
+  }
+  .back-link:hover { color: #fff; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: var(--c1);
+    margin: 24px 20px 0;
+    border-radius: 24px;
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .hero::before, .hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: #ffffff;
+    opacity: 0.07;
+    filter: blur(10px);
+  }
+  .hero::before { width: 240px; height: 240px; top: -80px; left: -60px; }
+  .hero::after { width: 300px; height: 300px; bottom: -120px; right: -80px; }
+  .badge {
+    position: relative;
+    width: 128px;
+    height: 128px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c1);
+    box-shadow: 0 0 0 14px rgba(255,255,255,0.14);
+  }
+  .category-pill {
+    position: relative;
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    position: relative;
+    margin: 0 0 12px;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 800;
+    color: #fff;
+  }
+  .hero p.tagline {
+    position: relative;
+    margin: 0 auto 32px;
+    max-width: 520px;
+    font-size: 17px;
+    color: rgba(255,255,255,0.88);
+  }
+  .cta {
+    position: relative;
+    display: inline-block;
+    background: #fff;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 36px;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: transform .15s ease;
+  }
+  .cta:hover { transform: translateY(-2px); }
+
+  .features {
+    max-width: 880px;
+    margin: 56px auto 0;
+    padding: 0 20px;
+  }
+  .features h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 24px;
+    color: #fff;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .feature-card {
+    background: #15241a;
+    border: 1px solid #22392a;
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .feature-icon {
+    color: var(--c1);
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+  .feature-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: #fff;
+  }
+  .feature-desc {
+    font-size: 14px;
+    color: #b3c9ba;
+    margin: 0;
+  }
+
+  .steps {
+    max-width: 880px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+  }
+  .steps h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 20px;
+    color: #fff;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-top: 1px solid #22392a;
+  }
+  .step:first-of-type { border-top: 0; }
+  .step-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--c1);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step p { margin: 0; font-size: 14px; color: #c6dccc; }
+  .step strong { color: #fff; }
+
+  .note {
+    max-width: 880px;
+    margin: 24px auto 0;
+    padding: 0 20px;
+    font-size: 13px;
+    color: #7fa08a;
+  }
+
+  .footer-cta {
+    max-width: 880px;
+    margin: 56px auto 0;
+    padding: 0 20px 64px;
+    text-align: center;
+  }
+  .footer-cta .cta {
+    background: var(--c1);
+    color: #fff;
+    box-shadow: none;
+  }
+  .footer-links {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #7fa08a;
+  }
+  .footer-links a { color: #9a9a9a; }
+  .footer-links a:hover { color: #fff; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="back-link" href="https://apps.yuji-nakamura.com/">← アプリ一覧に戻る</a>
+  </div>
+
+  <section class="hero">
+    <span class="category-pill">学び・成長</span>
+    <div class="badge"><svg width="72" height="72" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18 H25"/><path d="M39 18 H56"/><path d="M8 28 H25"/><path d="M39 28 H56"/><rect x="25" y="14" width="14" height="18" rx="3"/><path d="M28 32 L21 48 L27 51 L32 37"/><path d="M36 32 L43 48 L37 51 L32 37"/></svg></div>
+    <h1>人間力道場</h1>
+    <p class="tagline">AIが文章も分析もこなす時代に、価値が上がるのは「人間にしかできない力」。職種や会社が変わっても持ち運べるポータブルスキルを、毎日5分のお題で稽古して鍛える道場です。</p>
+    <a class="cta" href="https://ningenryoku-dojo.vercel.app">アプリを使ってみる →</a>
+  </section>
+
+  <section class="features">
+    <h2>できること</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="8" width="40" height="48" rx="4"/><path d="M20 20 H44"/><path d="M20 30 H44"/><path d="M20 40 H34"/></svg></div>
+        <h3 class="feature-title">人間スキル図鑑</h3>
+        <p class="feature-desc">問いを立てる・共感して聴く・決めて責任を持つ・人を巻き込む・信頼をつくる・場を読む・交渉して調整する・言葉にして伝える。AIに置き換えにくい8つの力を、「なぜAIには難しいか」と稽古のコツつきで紹介します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="10"/><circle cx="32" cy="32" r="1.5" fill="currentColor" stroke="none"/></svg></div>
+        <h3 class="feature-title">今日の稽古（1日5分のお題）</h3>
+        <p class="feature-desc">「会議で1回、まだ誰も聞いていない問いを投げる」など、仕事や暮らしの中ですぐ試せるお題が毎日出ます。自己評価がいちばん低い力のお題が優先して出るので、苦手を自然に鍛えられます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 50 L12 14 Q12 10 16 10 H48 Q52 10 52 14 V50"/><path d="M8 50 H56"/><path d="M22 22 H42"/><path d="M22 32 H42"/></svg></div>
+        <h3 class="feature-title">実践ログ</h3>
+        <p class="feature-desc">やってみた場面、どうだったか、手応え（うまくいった・まあまあ・むずかしかった）、気づきを残せます。お題なしの自由記録もできます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="44" height="44" rx="4"/><path d="M10 32 H54"/><path d="M18 16 V28"/><path d="M24 18 V28"/><path d="M32 14 V28"/><path d="M18 38 V50"/><path d="M25 36 V50"/></svg></div>
+        <h3 class="feature-title">証拠の棚</h3>
+        <p class="feature-desc">手応えのあった稽古は「エピソード」として棚へ。面接や評価面談で話せる形でコピーしたり、AIに1分で話せるエピソードへ整えてもらう依頼文を作れます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 L54 24 L46 52 H18 L10 24 Z"/><path d="M32 20 L44 28 L40 44 H24 L20 28 Z"/></svg></div>
+        <h3 class="feature-title">月1回の自己評価レーダー</h3>
+        <p class="feature-desc">8つの力を5段階で自己評価すると、レーダーチャートで先月との違いが見えます。伸ばしたい力が一目でわかります。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 50 H52"/><path d="M18 50 V36"/><path d="M28 50 V24"/><path d="M38 50 V30"/><path d="M48 50 V16"/></svg></div>
+        <h3 class="feature-title">成長の見える化</h3>
+        <p class="feature-desc">稽古の経験値で、入門・白帯・黄帯…黒帯・師範と段位が上がります。スキルごとのレベル、連続稽古日数、稽古カレンダーで続けた成果が見えます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps">
+    <h2>使い方</h2>
+    <div class="step">
+      <span class="step-num">1</span>
+      <p><strong>Googleでログイン</strong>：記録はあなた専用の領域に保存され、スマホとPCで同じデータを見られます。</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <p><strong>まずは自己評価</strong>：8つの力を5段階でふりかえると、伸ばしたい力のお題が優先して出るようになります。</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <p><strong>今日のお題をやってみる</strong>：仕事や暮らしの中で1つ試したら「やってみた！」で、場面・結果・手応え・気づきを記録します。</p>
+    </div>
+    <div class="step">
+      <span class="step-num">4</span>
+      <p><strong>エピソードを貯める</strong>：手応えのあった稽古は証拠の棚へ。月に1回自己評価して、レーダーで成長を確かめましょう。</p>
+    </div>
+  </section>
+
+  <p class="note">※ うまくいかなかった稽古も、立派な経験値です。むずかしかったことこそ、気づきを書いておきましょう。</p>
+
+  <section class="footer-cta">
+    <a class="cta" href="https://ningenryoku-dojo.vercel.app">今すぐ使ってみる →</a>
+    <p class="footer-links"><a href="https://apps.yuji-nakamura.com/">他のアプリも見る</a></p>
+  </section>
+</body>
+</html>

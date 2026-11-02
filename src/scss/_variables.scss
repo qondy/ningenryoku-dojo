@@ -1,0 +1,47 @@
+// Colors — 緑（Flat UI「Nephritis」。OGPサムネイルと統一）
+$color-bg: #f4f8f5;
+$color-surface: #ffffff;
+$color-surface-2: #e9f2ec;
+$color-surface-3: #d3e5d9;
+$color-primary: #27ae60;
+$color-primary-hover: #229954;
+$color-primary-ink: #1b7a43; // 白地の上で文字として使う濃い緑（コントラスト確保）
+$color-primary-soft: #e3f4ea;
+$color-danger: #dc2626;
+$color-text: #1d1d1f;
+$color-text-muted: #5b635e;
+$color-border: #dfe9e2;
+
+// 手応えの色（primaryには追従させない）
+$color-good: #b9770e;
+$color-good-soft: #fdf2dc;
+$color-soso: #1f6fb2;
+$color-soso-soft: #e4effa;
+$color-hard: #8e44ad;
+$color-hard-soft: #f3e8f8;
+
+// Typography
+$font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+$font-size-xs: 12px;
+$font-size-sm: 13px;
+$font-size-base: 15px;
+$font-size-lg: 18px;
+$font-size-xl: 22px;
+$font-size-2xl: 28px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+// Border radius
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;

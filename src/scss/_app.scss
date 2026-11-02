@@ -1,0 +1,1007 @@
+// 本文の下余白は画面下部の固定ボタンの高さ分確保する
+.app-main {
+  padding-bottom: 160px;
+}
+
+// ===== Tabs =====
+.tabs-bar {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba($color-bg, 0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid $color-border;
+}
+
+.tabs {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: $spacing-sm $spacing-md;
+  display: flex;
+  gap: $spacing-xs;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__btn {
+    flex: 1 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    font-size: $font-size-sm;
+    font-weight: 700;
+    color: $color-text-muted;
+    white-space: nowrap;
+
+    &:hover {
+      color: $color-primary-ink;
+    }
+
+    &.is-active {
+      background: $color-primary;
+      color: #fff;
+    }
+  }
+
+  &__count {
+    min-width: 20px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: rgba($color-text, 0.08);
+    font-size: $font-size-xs;
+
+    &:empty {
+      display: none;
+    }
+
+    .is-active & {
+      background: rgba(#fff, 0.25);
+    }
+  }
+}
+
+// ===== Today =====
+.today-head {
+  margin-bottom: $spacing-md;
+
+  &__date {
+    font-size: $font-size-sm;
+    font-weight: 700;
+    color: $color-primary-ink;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: 800;
+    margin-top: 2px;
+
+    @media (max-width: $bp-mobile) {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+
+// ===== Item cards =====
+.card-list {
+  display: grid;
+  gap: $spacing-sm;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $spacing-sm;
+  background: $color-surface;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: 0 2px 12px rgba($color-primary, 0.08);
+
+  &.is-episode {
+    border-left: 4px solid $color-primary;
+  }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__badge {
+    display: inline-block;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    color: $color-primary-ink;
+    background: $color-primary-soft;
+    padding: 2px 10px;
+    border-radius: 999px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: 700;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  &__meta {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacing-xs $spacing-sm;
+  }
+}
+
+.source-pill,
+.level-pill,
+.episode-pill,
+.xp-pill {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  color: $color-text-muted;
+  background: $color-surface-2;
+}
+
+.level-pill {
+  color: #fff;
+  background: $color-primary-ink;
+}
+
+.episode-pill {
+  color: #fff;
+  background: $color-primary;
+}
+
+.xp-pill {
+  color: $color-primary-ink;
+  background: transparent;
+  border: 1px solid $color-surface-3;
+}
+
+.feel-pill {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+
+  &--good {
+    color: $color-good;
+    background: $color-good-soft;
+  }
+
+  &--soso {
+    color: $color-soso;
+    background: $color-soso-soft;
+  }
+
+  &--hard {
+    color: $color-hard;
+    background: $color-hard-soft;
+  }
+}
+
+
+.text-btn {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  text-decoration: underline;
+  padding: 2px;
+
+  &:hover {
+    color: $color-primary-ink;
+  }
+}
+
+.add-inline {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: $spacing-lg;
+  border: 2px dashed $color-primary;
+  border-radius: $radius-lg;
+  color: $color-primary-ink;
+  font-size: $font-size-base;
+  font-weight: 700;
+
+  &:hover {
+    background: $color-primary-soft;
+  }
+}
+
+// ===== 証拠の棚 =====
+.search-field {
+  margin-bottom: $spacing-sm;
+
+  input {
+    width: 100%;
+    padding: 10px $spacing-md;
+    border: 1px solid $color-border;
+    border-radius: 999px;
+    background: $color-surface;
+    font-size: $font-size-base;
+    color: $color-text;
+  }
+}
+
+
+// ===== 経験値 =====
+.title-card {
+  background: $color-primary;
+  color: #fff;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-md;
+  text-align: center;
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: 700;
+    opacity: 0.92;
+  }
+
+  &__name {
+    font-size: $font-size-2xl;
+    font-weight: 800;
+    margin: 2px 0;
+  }
+
+  &__xp {
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-sm;
+
+    strong {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__bar {
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(#fff, 0.28);
+    overflow: hidden;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  &__fill {
+    height: 100%;
+    width: 0;
+    background: #fff;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+
+  &__next {
+    font-size: $font-size-xs;
+    margin-top: 6px;
+  }
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-sm;
+  margin-bottom: $spacing-sm;
+}
+
+.stat-card {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  padding: $spacing-md $spacing-sm;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba($color-primary, 0.08);
+
+  &__value {
+    font-size: $font-size-2xl;
+    font-weight: 800;
+    color: $color-primary-ink;
+
+    @media (max-width: $bp-mobile) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    font-weight: 600;
+  }
+}
+
+.xp-rule {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  line-height: 1.6;
+  margin-bottom: $spacing-xl;
+}
+
+.field-levels {
+  display: grid;
+  gap: $spacing-sm;
+}
+
+.field-level {
+  background: $color-surface;
+  border-radius: $radius-lg;
+  padding: $spacing-sm $spacing-md $spacing-md;
+  box-shadow: 0 2px 12px rgba($color-primary, 0.08);
+
+  &__head {
+    display: flex;
+    align-items: baseline;
+    gap: $spacing-sm;
+    margin-bottom: 6px;
+  }
+
+  &__name {
+    font-weight: 800;
+  }
+
+  &__lv {
+    font-weight: 800;
+    color: $color-primary-ink;
+  }
+
+  &__meta {
+    margin-left: auto;
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+  }
+
+  &__track {
+    height: 8px;
+    border-radius: 999px;
+    background: $color-surface-2;
+    overflow: hidden;
+  }
+
+  &__fill {
+    height: 100%;
+    background: $color-primary;
+    border-radius: 999px;
+  }
+}
+
+.month-chart {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: $spacing-sm;
+  background: $color-surface;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: 0 2px 12px rgba($color-primary, 0.08);
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__value {
+    font-size: $font-size-xs;
+    font-weight: 800;
+    color: $color-primary-ink;
+  }
+
+  &__bar-wrap {
+    height: 96px;
+    width: 100%;
+    max-width: 28px;
+    display: flex;
+    align-items: flex-end;
+    background: $color-surface-2;
+    border-radius: $radius-sm;
+    overflow: hidden;
+  }
+
+  &__bar {
+    width: 100%;
+    background: $color-primary;
+    border-radius: $radius-sm $radius-sm 0 0;
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+  }
+}
+
+// ===== Chips =====
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: $spacing-md;
+
+  &--tight {
+    margin-bottom: 0;
+  }
+}
+
+.chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid $color-border;
+  background: $color-surface;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $color-text;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &.is-active {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: #fff;
+  }
+}
+
+// ===== Modals =====
+.modal {
+  &__lead {
+    font-size: $font-size-lg;
+    font-weight: 800;
+    margin-bottom: $spacing-sm;
+    word-break: break-word;
+  }
+
+  &__summary {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    margin-bottom: $spacing-md;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  &__actions--split {
+    justify-content: space-between;
+  }
+
+  .field {
+    margin-bottom: $spacing-md;
+  }
+
+  input[type='date'] {
+    width: 100%;
+    padding: 10px $spacing-md;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-surface;
+    font-size: $font-size-base;
+    color: $color-text;
+  }
+}
+
+.modal__actions--split .btn.hidden + .btn {
+  margin-left: auto;
+}
+
+.segmented {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-xs;
+  margin-bottom: $spacing-md;
+
+  &__btn {
+    padding: 10px 4px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    color: $color-text-muted;
+    text-align: center;
+
+    &.is-active {
+      background: $color-primary-soft;
+      border-color: $color-primary;
+      color: $color-primary-ink;
+    }
+
+    &--soso.is-active {
+      background: $color-soso-soft;
+      border-color: $color-soso;
+      color: $color-soso;
+    }
+
+    &--hard.is-active {
+      background: $color-hard-soft;
+      border-color: $color-hard;
+      color: $color-hard;
+    }
+
+    &--good.is-active {
+      background: $color-good-soft;
+      border-color: $color-good;
+      color: $color-good;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-base;
+    font-weight: 800;
+  }
+
+  &__desc {
+    display: block;
+    font-size: $font-size-xs;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+}
+
+
+
+
+// ===== 画面下部の固定ボタン =====
+.about-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(20, 20, 26, 0.72);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 10px 18px;
+  font-size: $font-size-sm;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}
+
+// 追加ボタンは「ご意見」の真上に積む
+.fab {
+  position: fixed;
+  bottom: 88px;
+  right: 24px;
+  z-index: 1000;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: $color-primary;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba($color-primary, 0.45);
+
+  &:hover {
+    background: $color-primary-hover;
+  }
+}
+
+// トーストは固定ボタンより上に出す
+.toast {
+  bottom: 156px;
+}
+
+// ===== 人間力道場 =====
+.section__head--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+}
+
+.skill-mark {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid $color-primary;
+  color: $color-primary-ink;
+  background: $color-surface;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+
+  &--sm {
+    width: 26px;
+    height: 26px;
+    border-width: 1.5px;
+    font-size: $font-size-sm;
+  }
+}
+
+.reminder {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+  padding: $spacing-md;
+  border-radius: $radius-lg;
+  background: $color-primary-soft;
+  border: 1px solid $color-surface-3;
+
+  &__text {
+    flex: 1 1 240px;
+    font-size: $font-size-sm;
+    color: $color-primary-ink;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+}
+
+.drill-card {
+  margin-bottom: $spacing-lg;
+  padding: $spacing-lg;
+  border-radius: $radius-lg;
+  background: $color-primary;
+  color: #fff;
+
+  @media (max-width: $bp-mobile) {
+    padding: $spacing-md;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    .skill-mark {
+      border-color: #fff;
+      background: transparent;
+      color: #fff;
+    }
+  }
+
+  &__skill {
+    font-size: $font-size-lg;
+    font-weight: 800;
+  }
+
+  &__reason {
+    font-size: $font-size-xs;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+
+  &__text {
+    margin: 4px 0 $spacing-sm;
+    font-size: $font-size-xl;
+    font-weight: 800;
+    line-height: 1.5;
+    word-break: break-word;
+
+    @media (max-width: $bp-mobile) {
+      font-size: $font-size-lg;
+    }
+  }
+
+  &__tip {
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    opacity: 0.95;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-md;
+
+    .btn--primary {
+      background: #fff;
+      color: $color-primary-ink;
+
+      &:hover {
+        background: $color-primary-soft;
+      }
+    }
+
+    .btn--ghost {
+      color: #fff;
+      border-color: rgba(#fff, 0.7);
+      background: transparent;
+
+      &:hover {
+        background: rgba(#fff, 0.12);
+      }
+    }
+  }
+}
+
+.practice {
+  &__row {
+    display: grid;
+    gap: 2px;
+    padding-left: $spacing-sm;
+    border-left: 3px solid $color-surface-3;
+
+    &--muted .practice__text {
+      color: $color-text-muted;
+    }
+
+    &--insight {
+      border-left-color: $color-primary;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: 700;
+    color: $color-text-muted;
+  }
+
+  &__text {
+    font-size: $font-size-sm;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+.zukan-card {
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: 800;
+  }
+
+  &__short {
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__drills {
+    font-size: $font-size-sm;
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: $color-primary-ink;
+    }
+
+    ul {
+      margin-top: $spacing-xs;
+      padding-left: 1.4em;
+      list-style: disc;
+      line-height: 1.8;
+    }
+  }
+}
+
+.field-level__head .skill-mark {
+  margin-right: 2px;
+}
+
+.radar {
+  max-width: 420px;
+  margin: 0 auto;
+
+  &__svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  &__grid {
+    fill: none;
+    stroke: $color-border;
+    stroke-width: 1;
+  }
+
+  &__axis {
+    stroke: $color-border;
+    stroke-width: 1;
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 700;
+    fill: $color-text;
+  }
+
+  &__shape {
+    fill: rgba($color-primary, 0.22);
+    stroke: $color-primary;
+    stroke-width: 2.5;
+    stroke-linejoin: round;
+
+    &--prev {
+      fill: none;
+      stroke: $color-text-muted;
+      stroke-width: 1.5;
+      stroke-dasharray: 4 4;
+    }
+  }
+
+  &__dot {
+    fill: $color-primary;
+  }
+
+  &__legend {
+    margin-top: $spacing-xs;
+    text-align: center;
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+  }
+
+  &__memo {
+    margin-top: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    background: $color-surface-2;
+    font-size: $font-size-sm;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+.cal-nav {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  padding: $spacing-md;
+  border-radius: $radius-lg;
+  background: $color-surface;
+
+  &__week {
+    text-align: center;
+    font-size: $font-size-xs;
+    font-weight: 700;
+    color: $color-text-muted;
+  }
+
+  &__cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-sm;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+    background: $color-surface-2;
+
+    &.is-empty {
+      background: transparent;
+    }
+
+    &.is-done {
+      background: rgba($color-primary, 0.45);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    &.is-lv2 {
+      background: rgba($color-primary, 0.72);
+    }
+
+    &.is-lv3 {
+      background: $color-primary;
+    }
+
+    &.is-today {
+      box-shadow: inset 0 0 0 2px $color-primary-ink;
+    }
+  }
+}
+
+.check-field {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+  font-size: $font-size-sm;
+  font-weight: 700;
+  cursor: pointer;
+
+  input {
+    width: 20px;
+    height: 20px;
+    accent-color: $color-primary;
+  }
+}
+
+.score-scale {
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  line-height: 1.7;
+}
+
+.assess-rows {
+  display: grid;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-md;
+}
+
+.assess-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px $spacing-sm;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__name {
+    font-size: $font-size-sm;
+    font-weight: 700;
+  }
+}
+
+.score-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.score-btn {
+  width: 38px;
+  height: 36px;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  font-size: $font-size-base;
+  font-weight: 700;
+  color: $color-text-muted;
+  background: $color-surface;
+
+  &.is-active {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: #fff;
+  }
+}

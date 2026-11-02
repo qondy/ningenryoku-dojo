@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#27ae60">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>人間力道場</title>
+  <meta name="description" content="AIが広がるなかで、人間にしかできないポータブルスキル（問いを立てる・共感して聴く・決めて責任を持つ・人を巻き込むなど8つ）を、1日5分のお題で稽古して鍛えるアプリ。実践ログ、語れるエピソードの棚、月1回の自己評価レーダーで成長が見えます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <meta property="og:title" content="人間力道場">
+  <meta property="og:description" content="AIにはできない力を、毎日5分の稽古で。人間にしかできないポータブルスキルを鍛える道場。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ningenryoku-dojo.vercel.app/ogp.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://ningenryoku-dojo.vercel.app/ogp.png">
+</head>
+<body>
+
+  <!-- ログイン画面 -->
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <span class="login-card__logo"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 18 H25"/><path d="M39 18 H56"/><path d="M8 28 H25"/><path d="M39 28 H56"/><rect x="25" y="14" width="14" height="18" rx="3"/><path d="M28 32 L21 48 L27 51 L32 37"/><path d="M36 32 L43 48 L37 51 L32 37"/></svg></span>
+      <h1 class="login-card__title">人間力道場</h1>
+      <p class="login-card__tagline">AIにはできない力を、毎日5分の稽古で。<br>人間にしかできないポータブルスキルを鍛えよう。</p>
+      <button id="btn-google-login" class="google-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Googleでログイン
+      </button>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <header class="app-header">
+      <span class="app-header__brand"><svg width="28" height="28" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-7px"><path d="M8 18 H25"/><path d="M39 18 H56"/><path d="M8 28 H25"/><path d="M39 28 H56"/><rect x="25" y="14" width="14" height="18" rx="3"/><path d="M28 32 L21 48 L27 51 L32 37"/><path d="M36 32 L43 48 L37 51 L32 37"/></svg> 人間力道場</span>
+      <nav class="app-header__nav">
+        <a href="about.html" class="app-header__about-link">アプリについて</a>
+        <div id="user-info" class="app-header__user hidden">
+          <img id="user-avatar" class="app-header__avatar" src="" alt="" />
+          <span id="user-name" class="app-header__name"></span>
+          <button id="btn-logout" class="btn btn--ghost btn--sm">ログアウト</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="tabs-bar">
+      <div class="tabs" role="tablist">
+        <button type="button" class="tabs__btn is-active" role="tab" data-tab="today" aria-selected="true">稽古</button>
+        <button type="button" class="tabs__btn" role="tab" data-tab="zukan" aria-selected="false">図鑑</button>
+        <button type="button" class="tabs__btn" role="tab" data-tab="shelf" aria-selected="false">証拠の棚<span class="tabs__count" id="count-shelf"></span></button>
+        <button type="button" class="tabs__btn" role="tab" data-tab="growth" aria-selected="false">成長</button>
+      </div>
+    </div>
+
+    <main class="app-main">
+
+      <!-- 今日の稽古 -->
+      <section class="panel" data-panel="today">
+        <div class="today-head">
+          <p class="today-head__date" id="today-date"></p>
+          <h2 class="today-head__title">今日の稽古</h2>
+        </div>
+        <div class="stat-row">
+          <div class="stat-card"><div class="stat-card__value" id="today-streak">0日</div><div class="stat-card__label">連続稽古</div></div>
+          <div class="stat-card"><div class="stat-card__value" id="today-count">0</div><div class="stat-card__label">今日の稽古</div></div>
+          <div class="stat-card"><div class="stat-card__value" id="today-title">入門</div><div class="stat-card__label">いまの段位</div></div>
+        </div>
+
+        <div id="assess-reminder" class="reminder hidden">
+          <p class="reminder__text" id="assess-reminder-text">今月の自己評価がまだです。8つの力をふりかえると、伸ばしたい力のお題が優先して出るようになります。</p>
+          <button type="button" id="btn-assess-reminder" class="btn btn--primary btn--sm">自己評価する</button>
+        </div>
+
+        <article class="drill-card" id="drill-card">
+          <div class="drill-card__head">
+            <span class="skill-mark" id="drill-mark">問</span>
+            <div>
+              <p class="drill-card__skill" id="drill-skill"></p>
+              <p class="drill-card__reason" id="drill-reason"></p>
+            </div>
+          </div>
+          <p class="drill-card__label">今日のお題</p>
+          <p class="drill-card__text" id="drill-text"></p>
+          <p class="drill-card__tip" id="drill-tip"></p>
+          <div class="drill-card__actions">
+            <button type="button" id="btn-drill-done" class="btn btn--primary">やってみた！</button>
+            <button type="button" id="btn-drill-next" class="btn btn--ghost btn--sm">別のお題</button>
+          </div>
+        </article>
+
+        <div class="section">
+          <div class="section__head">
+            <h3 class="section__title">ほかの力で稽古する</h3>
+          </div>
+          <div class="filter-chips" id="today-skill-chips" role="radiogroup"></div>
+        </div>
+
+        <button type="button" id="btn-add-inline" class="add-inline">＋ お題なしで自由に記録する</button>
+
+        <div class="section">
+          <div class="section__head">
+            <h3 class="section__title">今日の記録</h3>
+          </div>
+          <div id="today-list" class="card-list"></div>
+        </div>
+      </section>
+
+      <!-- 人間スキル図鑑 -->
+      <section class="panel hidden" data-panel="zukan">
+        <div class="section__head">
+          <h2 class="section__title">人間スキル図鑑</h2>
+          <p class="section__desc">AIが広がるほど価値が上がる、人間にしかできない8つのポータブルスキル。職種や会社が変わっても持ち運べる力です。</p>
+        </div>
+        <div id="zukan-list" class="card-list"></div>
+      </section>
+
+      <!-- 証拠の棚 -->
+      <section class="panel hidden" data-panel="shelf">
+        <div class="section__head">
+          <h2 class="section__title">証拠の棚</h2>
+          <p class="section__desc">稽古の記録が並ぶ棚です。うまく語れそうなものは「エピソード」に入れておくと、面接や評価面談の前にすぐ見返せます。</p>
+        </div>
+        <div class="search-field">
+          <input type="search" id="input-search" placeholder="キーワードで探す" maxlength="40" aria-label="キーワードで探す" />
+        </div>
+        <div class="filter-chips" id="shelf-kind-chips" role="radiogroup"></div>
+        <div class="filter-chips" id="shelf-chips" role="radiogroup"></div>
+        <div id="shelf-list" class="card-list"></div>
+      </section>
+
+      <!-- 成長 -->
+      <section class="panel hidden" data-panel="growth">
+        <div class="title-card">
+          <p class="title-card__label">いまの段位</p>
+          <p class="title-card__name" id="stat-title">入門</p>
+          <p class="title-card__xp"><strong id="stat-xp">0</strong> XP</p>
+          <div class="title-card__bar"><div class="title-card__fill" id="stat-title-fill"></div></div>
+          <p class="title-card__next" id="stat-next"></p>
+        </div>
+        <div class="stat-row">
+          <div class="stat-card"><div class="stat-card__value" id="stat-total">0</div><div class="stat-card__label">稽古の回数</div></div>
+          <div class="stat-card"><div class="stat-card__value" id="stat-streak">0日</div><div class="stat-card__label">連続稽古</div></div>
+          <div class="stat-card"><div class="stat-card__value" id="stat-episode">0</div><div class="stat-card__label">語れるエピソード</div></div>
+        </div>
+        <p class="xp-rule">稽古1回で10XP。気づきを書いたら＋5、エピソードに入れたら＋5。スキルごとに30XPでレベルが上がります。</p>
+
+        <div class="section">
+          <div class="section__head section__head--row">
+            <h3 class="section__title">自己評価レーダー</h3>
+            <button type="button" id="btn-assess" class="btn btn--ghost btn--sm">自己評価する</button>
+          </div>
+          <div id="radar" class="radar"></div>
+          <p class="radar__legend" id="radar-legend"></p>
+          <p class="radar__memo hidden" id="radar-memo"></p>
+        </div>
+
+        <div class="section">
+          <div class="section__head">
+            <h3 class="section__title">スキルごとのレベル</h3>
+          </div>
+          <div id="skill-levels" class="field-levels"></div>
+        </div>
+
+        <div class="section">
+          <div class="section__head section__head--row">
+            <h3 class="section__title" id="cal-title"></h3>
+            <div class="cal-nav">
+              <button type="button" id="btn-cal-prev" class="btn btn--ghost btn--sm" aria-label="前の月">‹</button>
+              <button type="button" id="btn-cal-next" class="btn btn--ghost btn--sm" aria-label="次の月">›</button>
+            </div>
+          </div>
+          <div id="calendar" class="calendar"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Yuji Nakamura. All rights reserved.</p>
+      <p><a href="https://apps.yuji-nakamura.com/" target="_blank" rel="noopener">他のアプリを見る →</a></p>
+    </footer>
+
+    <a href="about.html" class="about-btn"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="22" r="1.5" fill="currentColor" stroke="none"/><line x1="32" y1="30" x2="32" y2="44"/></svg> アプリについて</a>
+    <button type="button" id="btn-fab" class="fab" aria-label="稽古を記録する"><svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" aria-hidden="true"><path d="M32 12 V52"/><path d="M12 32 H52"/></svg></button>
+    <button id="feedback-btn" class="feedback-btn" aria-label="ご意見・ご要望"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-6px"><rect x="8" y="14" width="48" height="30" rx="8"/><path d="M22 44 L14 54 V44"/></svg> ご意見</button>
+  </div>
+
+  <!-- 稽古の記録 -->
+  <div id="practice-modal-overlay" class="dialog-overlay">
+    <form id="practice-form" class="modal">
+      <div class="modal__head">
+        <div class="modal__title" id="practice-modal-title">稽古を記録する</div>
+        <button type="button" id="btn-practice-close" class="modal__close" aria-label="閉じる">&times;</button>
+      </div>
+      <div class="field">
+        <span class="field__label">鍛えた力</span>
+        <div id="practice-skill-chips" class="filter-chips filter-chips--tight" role="radiogroup"></div>
+      </div>
+      <p class="modal__summary hidden" id="practice-drill"></p>
+      <div class="field">
+        <label class="field__label" for="input-date">稽古した日</label>
+        <input type="date" id="input-date" required />
+      </div>
+      <div class="field">
+        <label class="field__label" for="input-scene">どんな場面で？<span class="field__hint">任意</span></label>
+        <input type="text" id="input-scene" maxlength="100" placeholder="例：週次の定例会議で" />
+      </div>
+      <div class="field">
+        <label class="field__label" for="input-result">やってみてどうだった？</label>
+        <textarea id="input-result" maxlength="500" placeholder="例：「そもそも誰のための資料か」と聞いたら、目的が揃って議論が早く終わった" required></textarea>
+      </div>
+      <div class="field">
+        <span class="field__label">手応えは？</span>
+        <div id="feel-options" class="segmented" role="radiogroup"></div>
+      </div>
+      <div class="field">
+        <label class="field__label" for="input-insight">気づき・次はこうする<span class="field__hint">任意・+5XP</span></label>
+        <textarea id="input-insight" maxlength="500" placeholder="例：問いは会議の最初に出すほうが効く。次は冒頭で聞いてみる"></textarea>
+      </div>
+      <label class="check-field">
+        <input type="checkbox" id="input-episode" />
+        <span>語れるエピソードとして証拠の棚に入れる<span class="field__hint">+5XP</span></span>
+      </label>
+      <div class="modal__actions">
+        <button type="button" id="btn-practice-cancel" class="btn btn--ghost">キャンセル</button>
+        <button type="submit" id="btn-practice-submit" class="btn btn--primary">記録する</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 自己評価 -->
+  <div id="assess-modal-overlay" class="dialog-overlay">
+    <form id="assess-form" class="modal">
+      <div class="modal__head">
+        <div class="modal__title" id="assess-modal-title">今月の自己評価</div>
+        <button type="button" id="btn-assess-close" class="modal__close" aria-label="閉じる">&times;</button>
+      </div>
+      <p class="modal__lead">8つの力を、いまの自分の感覚で5段階で選んでください。</p>
+      <p class="score-scale" id="score-scale"></p>
+      <div id="assess-rows" class="assess-rows"></div>
+      <div class="field">
+        <label class="field__label" for="input-assess-memo">今月のひとこと<span class="field__hint">任意</span></label>
+        <textarea id="input-assess-memo" maxlength="300" placeholder="例：聴く力は伸びてきた。来月は決める力を意識したい"></textarea>
+      </div>
+      <div class="modal__actions">
+        <button type="button" id="btn-assess-cancel" class="btn btn--ghost">キャンセル</button>
+        <button type="submit" id="btn-assess-submit" class="btn btn--primary">保存する</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- 確認ダイアログ（カスタムUI） -->
+  <div id="confirm-dialog-overlay" class="dialog-overlay">
+    <div class="dialog">
+      <div class="dialog__title" id="confirm-dialog-title">削除しますか？</div>
+      <div class="dialog__text" id="confirm-dialog-text">削除すると元に戻せません。</div>
+      <div class="dialog__actions">
+        <button id="btn-confirm-cancel" class="btn btn--ghost">キャンセル</button>
+        <button id="btn-confirm-ok" class="btn btn--danger">削除する</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 要望送信モーダル -->
+  <div id="feedback-modal-overlay" class="dialog-overlay">
+    <div class="modal">
+      <div class="modal__head">
+        <div class="modal__title">ご意見・ご要望</div>
+        <button id="btn-feedback-close" class="modal__close" aria-label="閉じる">&times;</button>
+      </div>
+      <textarea id="input-feedback-message" rows="5" maxlength="2000" placeholder="ご意見・ご要望・バグ報告など、なんでもどうぞ"></textarea>
+      <div class="modal__actions">
+        <button id="btn-feedback-send" class="btn btn--primary">送信する</button>
+      </div>
+      <p class="modal__note">送信内容は開発者に届きます。個人情報は入力しないでください。</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

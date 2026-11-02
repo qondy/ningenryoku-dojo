@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#27ae60"/>
+  <g transform="translate(600 240) scale(3.6) translate(-32 -32)" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 18 H25"/><path d="M39 18 H56"/><path d="M8 28 H25"/><path d="M39 28 H56"/><rect x="25" y="14" width="14" height="18" rx="3"/><path d="M28 32 L21 48 L27 51 L32 37"/><path d="M36 32 L43 48 L37 51 L32 37"/></g>
+  <text x="600" y="480" font-size="76" font-weight="600" text-anchor="middle" fill="#ffffff" font-family="-apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif" letter-spacing="-2">人間力道場</text>
+</svg>
